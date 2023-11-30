@@ -15,8 +15,8 @@ class DynamicwebspiderSpider(scrapy.Spider):
 
     def start_requests(self):
         urls = [
-            ('事业', 'http://jshrss.jiangsu.gov.cn/col/col57210/index.html'),
-            ('企业', 'http://jshrss.jiangsu.gov.cn/col/col57211/index.html'),
+            # ('事业', 'http://jshrss.jiangsu.gov.cn/col/col57210/index.html'),
+            # ('企业', 'http://jshrss.jiangsu.gov.cn/col/col57211/index.html'),
             ('民办非企业社团', 'http://jshrss.jiangsu.gov.cn/col/col57212/index.html')
         ]
         for tab_title, url in urls:
@@ -41,7 +41,7 @@ class DynamicwebspiderSpider(scrapy.Spider):
 
         if next_page and next_page_disabled is None:
             next_page = response.urljoin(next_page)
-            # print('--->', tab_title, next_page, '<---')
+            print('--->', tab_title, next_page, '<---')
             yield scrapy.Request(url=next_page, callback=self.parse, meta={'tab_title': tab_title})
 
     def parse_content(self, response):
